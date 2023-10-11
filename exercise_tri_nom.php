@@ -1,56 +1,68 @@
 <?php
-$word1="charle";
-$word2="joss";
-$word3="Bonjour";
-$change="";
-$trier=true;
-$trier2=true;
-$same=false;
-$wordBeforeWord2=true;
-$i=0;
-$lastIndexShortWord= wordLengthShort($word1,$word2)-1;
-$lastIndexShortWord2= wordLengthShort($word2,$word3)-1;
+$word1 = "charle";
+$word2 = "joss";
+$word3 = "Bonjour";
+$change = "";
+$trier = true;
+$trier2 = true;
+$same = false;
+$wordBeforeWord2 = true;
+$word2BeforeWord3 = true;
+$i = 0;
 
 
+function wordLengthShort(string $mot1, string $mot2)
+{ // retourne le mot le plus court
+    $wordLength = strlen($mot1);
+    $wordLength2 = strlen($mot2);
 
-function wordLengthShort(string $mot1,string $mot2){// retourne le mot le plus court
-    $wordLength= strlen($mot1);
-    $wordLength2= strlen($mot2);
-
-    if ($wordLength<$wordLength2) {
+    if ($wordLength < $wordLength2) {
         return $wordLength;
-    }else{
+    } else {
         return $wordLength2;
     }
 }
-while($trier){
-$trier=false;
-    for($i=0;$i<=$lastIndexShortWord;$i++){// ici determine le mot le plus proche de A
-        if($word1[$i]==$word2[$i]){
-            }elseif($word1[$i]>$word2[$i]){
-          return $word2;
-          $trier=false;
+
+
+
+$wordLengthShortO = wordLengthShort($word1, $word2);
+$lastIndexWordShort = $wordLengthShortO - 1;
+
+while ($same && $i <= $lastIndexWordShort) {
+    if ($word1[$i] != $word2[$i]) {
+        $same = true;
+    }
+    if ($word1[$i] > $word2[$i]) {
+        $wordBeforeWord2 = false;
+    } else {
+        $i++;
     }
 }
-}
-while($trier2){
-    $trier2=false;
+return $wordBeforeWord2;
 
-    for($i=0;$i<=$lastIndexShortWord2;$i++){   // ici determine le mot le plus proche de A
-        if($word2[$i]==$word3[$i]){   
-            }elseif($word2[$i]>$word3[$i]){
-      return $word3;
-      $trier2=true;
-      if($trier2==true){
-        echo("Les deux dernier mots $word2 et $word3 ne sont pas ranger dans l\'ordre alphabétique.")
-      }
-        }
+if ($wordBeforeWord2 == false) {
+    $word2BeforeWord3 = wordLengthShort($word2, $word3);
+    if ($word2BeforeWord3 == false) {
+        echo "Félicitation c\'est dans l\'ordre !";
+    } else {
+        echo "Ils ne sont pas dans l\'ordre !";
+    }
+} else {
+    echo "Ils ne sont pas dans l\'ordre !";
+}
+
+
+$wordLengthShortO1 = wordLengthShort($word2, $word3);
+$lastIndexWordShort2 = $wordLengthShortO1 - 1;
+
+while ($same && $i <= $lastIndexWordShort2) {
+    if ($word2[$i] != $word3[$i]) {
+        $same = true;
+    }
+    if ($word2[$i] > $word3[$i]) {
+        $wordBeforeWord3 = false;
+    } else {
+        $i++;
     }
 }
-
-
-
-
-
-
-?>
+return $wordBeforeWord3;
