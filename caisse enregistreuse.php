@@ -1,0 +1,117 @@
+<?php
+ 
+$b500=1;
+$valeurb500=($b500*500);
+$b200=1;
+$valeurb200=($b200*200);
+$b100=0;
+$valeurb100=($b100*100);
+$b50=2;
+$valeurb50=($b50*50);
+$b20=3;
+$valeurb20=($b20*20);
+$b10=1;
+$valeurb10=($b10*10);
+$b5=10;
+$valeurb5=($b5*5);
+$p2=20;
+$valeurp2=($p2*2);
+$p1=4;
+$valeurp1=($p1*1);
+$p05=2;
+$valeurp05=($p05*0.5);
+$p02=20;
+$valeurp02=($p02*0.20);
+$p01=15;
+$valeurp01=($p01*0.10);
+$p005=23;
+$valeurp005=($p005*0.05);
+$p002=14;
+$valeurp002=($p002*0.02);
+$p001=30;
+$valeurp001=($p001*0.01);
+$valeurTotalFondCaisse=($valeurb500+$valeurb200+$valeurb100+$valeurb50+$valeurb20+$valeurb10+$valeurb5+$valeurp2+$valeurp1+$valeurp05+$valeurp02+$valeurp01+$valeurp005+$valeurp002+$valeurp001);
+$sommeARegler=541.53;
+$sommeDonnerParLeClient=819.87;
+$paiementClient=$sommeDonnerParLeClient;
+$regler=true;
+$rendumonnay=0;
+$valeurBilletClient(500,200,100,50,20,10,5,2,1,0.5,0.2,0.1,0.05,0.02,0.01);
+$nombreDeBilletClient=$valeurBilletClient();
+
+function transaction($sommeARegler,$sommeDonnerParLeClient){
+    $rendumonnay=$sommeARegler-$sommeDonnerParLeClient;
+    while($sommeDonnerParLeClient<$sommeARegler){
+        echo "Erreur, le montant a régler n\'est pas suffisant.";
+        $regler=false;
+    }
+}
+
+while($paiementClient>0.00){
+    foreach($valeurBilletClient()as$valeur);
+    $nombre = floor($montant_total / $valeur);
+    }
+        if($paiementClient){
+            if($billet500=0){
+                $pasArgent=true;
+            }
+        $b500++;
+        $paiementClient-500;
+        }
+        if($paiementClient>=200&&$paiementClient<500){
+        $b200++;
+        $paiementClient-200;
+        }
+        if($paiementClient>=100&&$paiementClient<200){
+        $b100++;
+        $paiementClient-100;
+        }
+        if($paiementClient>=50&&$paiementClient<100){
+            $b50++;
+            $paiementClient-50;
+        }
+        if($paiementClient>=20&&$paiementClient<50){
+            $b20++;
+            $paiementClient-20;
+        }
+        if($paiementClient>=10&&$paiementClient<20){
+            $b10++;
+            $paiementClient-10;
+        }
+        if($paiementClient>=5&&$paiementClient<10){
+            $b05++;
+            $paiementClient-5;
+        }
+        if($paiementClient>=2&&$paiementClient<5){
+            $p2++;
+            $paiementClient-2;
+        }
+        if($paiementClient>=1&&$paiementClient<2){
+            $p1++;
+            $paiementClient-1;
+        }
+        if($paiementClient>=0.50&&$paiementClient<1){
+            $p05++;
+            $paiementClient-0.50;
+        }
+        if($paiementClient>=0.20&&$paiementClient<0.50){
+            $p02++;
+            $paiementClient-0.20;
+        }
+        if($paiementClient>=0.10&&$paiementClient<0.20){
+            $p01++;
+            $paiementClient-0.10;
+        }
+        if($paiementClient>=0.05&&$paiementClient<0.10){
+            $p005++;
+            $paiementClient-0.05;
+        }
+        if($paiementClient>=0.02&&$paiementClient<0.05){
+            $p002++;
+            $paiementClient-0.02;
+        }
+        if($paiementClient>=0.01&&$paiementClient<0.02){
+            $p001++;
+            $paiementClient-0.01;
+        }
+?>
