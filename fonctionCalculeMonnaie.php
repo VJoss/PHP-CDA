@@ -20,3 +20,21 @@ function calculerMonnaieARendre($totalAPayer, $paiementDuClient, $fondDeCaisse)
 
     return ($monnaieARendre == 0) ? $rendu : false;
 }
+
+function calculerMonnaieEncaisse($totalAPayer, $paiementDuClient, $fondDeCaisse)
+{
+    foreach ($fondDeCaisse as $valeur => $quantite) {
+        if ($paiementDuClient > 0) {
+            while ($paiementDuClient >= $valeur && $quantite) {
+                $paiementDuClient -= $valeur;
+                if (array_key_exists($valeur, $fondDeCaisse)) {
+                    $fondDeCaisse[$valeur] += 1;
+                } else {
+                    $fondDeCaisse[$valeur] = 1;
+                }
+                $quantite--;
+            }
+        }
+    }
+    return ($paiementDuClient == 0) ? $fondDeCaisse : false;
+}
