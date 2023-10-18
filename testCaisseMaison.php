@@ -23,3 +23,9 @@ if ($entreEnCaisse !== false) {
     }
 }
 
+$etatFinalFondCaisse = calculerTotalFondCaisse($fondDeCaisse);
+if ($etatFinalFondCaisse !== false) {
+    echo "Mon fond de caisse totale actuelle est :<br>";
+        echo number_format($etatFinalFondCaisse / 100, 2) . "€ <br>";
+    
+}

@@ -46,3 +46,24 @@ function calculerMonnaieEncaisse($totalAPayer, $paiementDuClient, $fondDeCaisse)
         return false;
     }
 }
+
+function calculerTotalFondCaisse($fondDeCaisse)
+{
+    
+    $totalFondCaisse = 0;
+
+    foreach ($fondDeCaisse as $valeur => $quantite) {
+        if ($fondDeCaisse > 0) {
+            while ($fondDeCaisse>0 && $quantite > 0) {
+                $fondDeCaisse -= $quantite;
+                $totalFondCaisse += $valeur;
+    }
+
+    if ($fondDeCaisse == 0) {
+        return $totalFondCaisse;
+    } else {
+        return false;
+    }
+ }
+}
+}
