@@ -18,7 +18,11 @@ function calculerMonnaieARendre($totalAPayer, $paiementDuClient, $fondDeCaisse)
         }
     }
 
-    return ($monnaieARendre == 0) ? $rendu : false;
+    if ($monnaieARendre == 0) {
+        return $rendu;
+    } else {
+        return false;
+    }
 }
 
 function calculerMonnaieEncaisse($totalAPayer, $paiementDuClient, $fondDeCaisse)
@@ -36,5 +40,9 @@ function calculerMonnaieEncaisse($totalAPayer, $paiementDuClient, $fondDeCaisse)
             }
         }
     }
-    return ($paiementDuClient == 0) ? $fondDeCaisse : false;
+    if ($paiementDuClient == 0) {
+        return $fondDeCaisse;
+    } else {
+        return false;
+    }
 }
