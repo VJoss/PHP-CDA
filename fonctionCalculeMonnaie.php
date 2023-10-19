@@ -6,7 +6,7 @@ function calculerMonnaieARendre($totalAPayer, $paiementDuClient, $fondDeCaisse)
 
     foreach ($fondDeCaisse as $valeur => $quantite) {
         if ($quantite > 0) {
-            while ($monnaieARendre >= $valeur && $quantite > 0) {
+            while ($monnaieARendre >= $valeur && ($quantite > 0)) {
                 $monnaieARendre -= $valeur;
                 if (array_key_exists($valeur, $rendu)) {
                     $rendu[$valeur] += 1;
@@ -25,18 +25,17 @@ function calculerMonnaieARendre($totalAPayer, $paiementDuClient, $fondDeCaisse)
     }
 }
 
-function calculerMonnaieEncaisse($totalAPayer, $paiementDuClient, $fondDeCaisse)
+function calculerMonnaieEncaisse($paiementDuClient, $fondDeCaisse)
 {
     foreach ($fondDeCaisse as $valeur => $quantite) {
         if ($paiementDuClient > 0) {
-            while ($paiementDuClient >= $valeur && $quantite) {
+            while ($paiementDuClient >= $valeur) {
                 $paiementDuClient -= $valeur;
                 if (array_key_exists($valeur, $fondDeCaisse)) {
                     $fondDeCaisse[$valeur] += 1;
                 } else {
                     $fondDeCaisse[$valeur] = 1;
-                }
-                $quantite--;
+                }   
             }
         }
     }
@@ -47,23 +46,3 @@ function calculerMonnaieEncaisse($totalAPayer, $paiementDuClient, $fondDeCaisse)
     }
 }
 
-function calculerTotalFondCaisse($fondDeCaisse)
-{
-    
-    $totalFondCaisse = 0;
-
-    foreach ($fondDeCaisse as $valeur => $quantite) {
-        if ($fondDeCaisse > 0) {
-            while ($fondDeCaisse>0 && $quantite > 0) {
-                $fondDeCaisse -= $quantite;
-                $totalFondCaisse += $valeur;
-    }
-
-    if ($fondDeCaisse == 0) {
-        return $totalFondCaisse;
-    } else {
-        return false;
-    }
- }
-}
-}

@@ -2,6 +2,14 @@
 require "ConstanteEtVariable.php";
 require "fonctionCalculeMonnaie.php";
 
+$entreEnCaisse = calculerMonnaieEncaisse($paiementDuClient, $fondDeCaisse);
+if ($entreEnCaisse !== false) {
+    echo "Mon fond de caisse actuelle est :<br>";
+    foreach ($entreEnCaisse as $valeur => $quantite) {
+        echo number_format($valeur / 100, 2) . "€ x $quantite<br>";
+    }
+}
+
 $resultat = calculerMonnaieARendre($totalAPayer, $paiementDuClient, $fondDeCaisse);
 
 if ($resultat !== false) {
@@ -15,17 +23,3 @@ if ($resultat !== false) {
     echo "Impossible de rendre la monnaie avec le fond de caisse actuel.<br>";
 }
 
-$entreEnCaisse = calculerMonnaieEncaisse($totalAPayer, $paiementDuClient, $fondDeCaisse);
-if ($entreEnCaisse !== false) {
-    echo "Mon fond de caisse actuelle est :<br>";
-    foreach ($entreEnCaisse as $valeur => $quantite) {
-        echo number_format($valeur / 100, 2) . "€ x $quantite<br>";
-    }
-}
-
-$etatFinalFondCaisse = calculerTotalFondCaisse($fondDeCaisse);
-if ($etatFinalFondCaisse !== false) {
-    echo "Mon fond de caisse totale actuelle est :<br>";
-        echo number_format($etatFinalFondCaisse / 100, 2) . "€ <br>";
-    
-}
