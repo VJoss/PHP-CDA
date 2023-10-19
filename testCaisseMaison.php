@@ -31,3 +31,8 @@ if ($entreEnCaisse !== false) {
 $totaleEnCaisse = TotalFondDeCaisse($entreEnCaisse);
 echo "La valeur totale du fond de caisse est de : ";
 echo number_format($totaleEnCaisse / 100, 2)."€<br>";
+
+$echangeMonnayeur = calculerMonnayeur($monnayeur,$fondDeCaisse);
+foreach ($echangeMonnayeur as $valeur => $quantite) {
+    echo number_format($valeur / 100, 2) . "€ x $quantite<br>";
+}

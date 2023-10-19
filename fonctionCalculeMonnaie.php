@@ -65,3 +65,21 @@ foreach ($fondDeCaisse as $valeur => $quantite) {
 }
 return $sommeTotal;
 }
+
+
+function calculerMonnayeur($monnayeur, $fondDeCaisse)
+{
+    $rendu = array();
+    /*
+    pour chaque valeur de mon fond de caisse qui possede une quantité si la quantité est inférieur a 1 alors pour chaque valeur de ma caisse  == a mon monnayeur 
+    */
+    foreach ($fondDeCaisse as $valeur => $quantite) {
+        if ($quantite < 1 && $valeur==$monnayeur[$valeur]) {
+            while ($valeur<5 ) {
+                $fondDeCaisse[$valeur] += 1;
+                $monnayeur[$valeur] -= 1;
+            }
+           }
+            }
+            return $fondDeCaisse;
+        }

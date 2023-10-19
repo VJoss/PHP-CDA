@@ -16,6 +16,23 @@ $fondDeCaisse = array(
     2 => 14,
     1 => 30
 );
+$monnayeur = array(
+    50000 => 1,
+    20000 => 1,
+    10000 => 2,
+    5000 => 2,
+    2000 => 4,
+    1000 => 4,
+    500 => 10,
+    200 => 15,
+    100 => 20,
+    50 => 20,
+    20 => 25,
+    10 => 30,
+    5 => 30,
+    2 => 30,
+    1 => 30
+);
 $totalAPayer = 13549;
 $paiementDuClient = 15000;
 $monnaieManquante = ($totalAPayer - $paiementDuClient);
