@@ -24,6 +24,16 @@ function calculerMonnaieARendre($totalAPayer, $paiementDuClient, $fondDeCaisse)
         return false;
     }
 }
+function TotaleRendu($rendu){
+    $sommeTotal = 0;
+    
+    foreach ($rendu as $valeur => $quantite) {
+        if (is_numeric($valeur)) {
+            $sommeTotal += $valeur*$quantite;
+        }
+    }
+    return $sommeTotal;
+    }
 
 function calculerMonnaieEncaisse($paiementDuClient, $fondDeCaisse)
 {
@@ -45,4 +55,13 @@ function calculerMonnaieEncaisse($paiementDuClient, $fondDeCaisse)
         return false;
     }
 }
+function TotalFondDeCaisse($fondDeCaisse){
+$sommeTotal = 0;
 
+foreach ($fondDeCaisse as $valeur => $quantite) {
+    if (is_numeric($valeur)) {
+        $sommeTotal += $valeur*$quantite;
+    }
+}
+return $sommeTotal;
+}
