@@ -14,10 +14,12 @@ if ($resultat !== false) {
 } else {
     echo "Impossible de rendre la monnaie avec le fond de caisse actuel.<br><br>";
 }
+if ($resultat !== false) {
+$totaleRenduClient = TotaleRendu($resultat);}
 
-$totaleRenduClient = TotaleRendu($resultat);
-echo "La valeur totale rendu est de : ";
-echo number_format($totaleRenduClient / 100, 2)."€<br>";
+elseif ($paiementDuClient < $totalAPayer) {;
+    echo " ";
+}
 
 $entreEnCaisse = calculerMonnaieEncaisse($paiementDuClient, $fondDeCaisse);
 if ($entreEnCaisse !== false) {
@@ -32,7 +34,16 @@ $totaleEnCaisse = TotalFondDeCaisse($entreEnCaisse);
 echo "La valeur totale du fond de caisse est de : ";
 echo number_format($totaleEnCaisse / 100, 2)."€<br>";
 
-$echangeMonnayeur = calculerMonnayeur($monnayeur,$fondDeCaisse);
-foreach ($echangeMonnayeur as $valeur => $quantite) {
-    echo number_format($valeur / 100, 2) . "€ x $quantite<br>";
+$totaleEnCaissebis = TotalFondDeCaissebis($test);
+echo "La valeur totale du fond de caisse est de : ";
+echo $totaleEnCaissebis."€<br>";
+
+$entreEnCaissebis = calculerMonnaieEncaissebis($paiementDuClient, $test);
+if ($entreEnCaissebis !== false) {
+    echo "<br>Le fond de caisse actuelle est :<br>";
+    foreach ($entreEnCaissebis as $valeur => $quantite) {
+
+        echo $valeur. $quantite;
+    }
 }
+$convertionValeur = convertionTableau($test);

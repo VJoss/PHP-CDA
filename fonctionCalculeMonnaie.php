@@ -67,19 +67,49 @@ return $sommeTotal;
 }
 
 
-function calculerMonnayeur($monnayeur, $fondDeCaisse)
-{
-    $rendu = array();
-    /*
-    pour chaque valeur de mon fond de caisse qui possede une quantité si la quantité est inférieur a 1 alors pour chaque valeur de ma caisse  == a mon monnayeur 
-    */
-    foreach ($fondDeCaisse as $valeur => $quantite) {
-        if ($quantite < 1 && $valeur==$monnayeur[$valeur]) {
-            while ($valeur<5 ) {
-                $fondDeCaisse[$valeur] += 1;
-                $monnayeur[$valeur] -= 1;
-            }
-           }
-            }
-            return $fondDeCaisse;
+function TotalFondDeCaissebis($test){
+    $sommeTotal = 0;
+    
+    foreach ($test as $valeur => $quantite) {
+        if (is_numeric($valeur)) {
+            $sommeTotal += $valeur*$quantite;
         }
+    }
+    return $sommeTotal;
+}
+
+function calculerMonnaieEncaissebis($paiementDuClient, $test)
+{
+    foreach ($test as $valeur => $quantite) {
+        if ($paiementDuClient > 0 ) {
+            while ($paiementDuClient >= $valeur) {
+                $paiementDuClient -= $valeur;
+                if (array_key_exists ($valeur, $test)) {
+                    $test[$valeur] += 1;
+                } else {
+                    $test[$valeur] = 1;
+                }   
+            }
+        }
+    }
+    if ($paiementDuClient == 0) {
+        return $test;
+    } else {
+        return false;
+    }
+}
+
+
+
+function convertionTableau($test)
+{
+    foreach ($test as $valeur => $quantite) {
+        if(strpos($valeur,'.')==false){
+            $valeurFormater = number_format((int)$valeur,0,',',' ');
+        }
+        else{
+            $valeurFormater = number_format((float)$valeur,2,',',' ');
+        }
+        return $valeurFormater;
+    }
+}
